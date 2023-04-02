@@ -1,0 +1,34 @@
+$primary-color: #C1A5A9;
+$secondary-color: #586F7C;
+$thirdary-color: #B8DBD9;
+*{
+    font-size: large;
+}
+.navbar {
+    color: $primary-color;
+    background-color: $secondary-color;
+}
+
+.nav-link , .navbar-brand{
+    color: $primary-color;
+}
+.nav-link:hover , .navbar-brand:hover , .navbar-toggler:hover{
+    color: $thirdary-color;
+}
+.navbar-toggler{
+    background-color: $thirdary-color;
+}
+body {
+    background-color: $primary-color;
+    color: $thirdary-color;
+}
+
+li {
+    color: $primary-color;
+}
+.navbar-collapse{
+    align-self: flex-end;
+}
+li a {
+    color: $primary-color;
+}
