@@ -1,4 +1,4 @@
 <?php
 
 ?>
-stronagłówna
+<h1>stronagłówna</h1>   
