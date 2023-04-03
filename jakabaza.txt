@@ -1,0 +1,14 @@
+Baza użytkowników:
+pracowicy, 
+
+użytkownicy
+
+
+Baza produktów:
+Relacja z użytkownikami
+
+Logi:
+wszystkie zmiany w każdej tabeli
+
+Strony produktów:
+Relacja z produktami

@@ -15,6 +15,7 @@ $thirdary-color: #B8DBD9;
 .dropdown-menu,
 .nav-item:dropdown {
     text-align: center;
+    margin-right:10px;
 }
 
 .dropdown-item {
@@ -45,7 +46,7 @@ li {
 }
 
 .navbar-collapse {
-    align-self: flex-end;
+    margin-right: auto;
 }
 
 li a {
