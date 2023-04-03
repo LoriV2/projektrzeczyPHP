@@ -6,17 +6,9 @@
 .dropdown-menu {
   color: #C1A5A9;
   background-color: #586F7C;
-}
-
-.dropdown-menu,
-.nav-item:dropdown {
   text-align: center;
-}
-
-.dropdown-item {
-  padding: 0;
-  text-align: center;
-  width: fit-content;
+  border: none;
+  min-width: auto;
 }
 
 .nav-link,
@@ -39,13 +31,12 @@
 li {
   color: #C1A5A9;
 }
-
-.navbar-collapse {
-  align-self: flex-end;
-}
-
 li a {
   color: #C1A5A9;
+}
+
+.navbar-collapse {
+  margin-right: auto;
 }
 
 body {

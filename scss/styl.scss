@@ -10,18 +10,9 @@ $thirdary-color: #B8DBD9;
 .dropdown-menu {
     color: $primary-color;
     background-color: $secondary-color;
-}
-
-.dropdown-menu,
-.nav-item:dropdown {
     text-align: center;
-    margin-right:10px;
-}
-
-.dropdown-item {
-    padding: 0;
-    text-align: center;
-    width: fit-content;
+    border: none;
+    min-width: auto;
 }
 
 .nav-link,
@@ -29,6 +20,7 @@ $thirdary-color: #B8DBD9;
 .dropdown-item {
     color: $primary-color;
 }
+
 
 .nav-link:hover,
 .navbar-brand:hover,
@@ -43,14 +35,14 @@ $thirdary-color: #B8DBD9;
 
 li {
     color: $primary-color;
+
+    a {
+        color: $primary-color;
+    }
 }
 
 .navbar-collapse {
     margin-right: auto;
-}
-
-li a {
-    color: $primary-color;
 }
 
 body {

@@ -44,7 +44,7 @@ if (isset($_GET['Strona'])) {
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<?php
 							if (isset($_SESSION['user'])) {
-								echo	'<li><a class="dropdown-item" href="#">Twoje Konto</a></li>
+								echo	'<li><a class="dropdown-item" href="index.php?Strona=TwojeKonto">Twoje Konto</a></li>
 										<li><a class="dropdown-item" href="#">Wyloguj</a></li>';
 							} else {
 								echo	'<li><a class="dropdown-item" href="#">Rejestracja</a></li>
@@ -99,6 +99,10 @@ if (isset($_GET['Strona'])) {
 			case "":
 				include "podstrony/StronaGłówna.php";
 				break;
+			case "TwojeKonto":
+				include "podstrony/Twoje.php";
+				break;
+
 			default:
 				echo "Przepraszamy ale strona o nazwie: " . $LINK . " nie istnieje";
 				break;
@@ -106,7 +110,7 @@ if (isset($_GET['Strona'])) {
 	}
 
 	echo wyswietl($_GET['Strona']);
-	
+
 	?>
 </body>
 
