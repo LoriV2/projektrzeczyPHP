@@ -5,5 +5,4 @@ if ($k == "k") {
     header("Location: /projektrzeczy/index.php?Strona=StronaGłówna");
 }
 ?>
-
-logowanie
+onas

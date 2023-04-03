@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+include "rzecz.php";
+$k = "k";
 if (isset($_GET['Strona'])) {
 } else {
 	$_GET['Strona'] = "StronaGłówna";
@@ -45,9 +47,9 @@ if (isset($_GET['Strona'])) {
 							<?php
 							if (isset($_SESSION['user'])) {
 								echo	'<li><a class="dropdown-item" href="index.php?Strona=TwojeKonto">Twoje Konto</a></li>
-										<li><a class="dropdown-item" href="#">Wyloguj</a></li>';
+										<li><a class="dropdown-item" href="index.php?Strona=Logowanie&&Logout=1">Wyloguj</a></li>';
 							} else {
-								echo	'<li><a class="dropdown-item" href="#">Rejestracja</a></li>
+								echo	'<li><a class="dropdown-item" href="index.php?Strona=Rejestracja">Rejestracja</a></li>
 										<li><a class="dropdown-item" href="index.php?Strona=Logowanie">Logowanie</a></li>';
 							}
 							?>
@@ -90,19 +92,23 @@ if (isset($_GET['Strona'])) {
 			case "Zamówienia":
 				if (isset($_SESSION['user'])) {
 					if ($_SESSION['user'] == "pracownik") {
-						include "podstrony/Produkty.php";
+						include "podstrony/Zamówienia.php";
 						break;
 					}
 				}
 				echo "Nie masz dostępu do tej strony!";
 				break;
-			case "":
-				include "podstrony/StronaGłówna.php";
-				break;
 			case "TwojeKonto":
-				include "podstrony/Twoje.php";
+				if (isset($_SESSION['user'])) {
+					include "podstrony/Twoje.php";
+				}
 				break;
-
+			case "Rejestracja":
+				include "podstrony/Rejestracja.php";
+				break;
+			case "Onas":
+				include "podstrony/onas.php";
+				break;
 			default:
 				echo "Przepraszamy ale strona o nazwie: " . $LINK . " nie istnieje";
 				break;
