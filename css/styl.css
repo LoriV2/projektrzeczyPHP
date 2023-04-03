@@ -4,8 +4,8 @@
 
 .navbar,
 .dropdown-menu {
-  color: #C1A5A9;
-  background-color: #586F7C;
+  color: #FED18C;
+  background-color: #99acb8;
   text-align: center;
   border: none;
   min-width: auto;
@@ -14,25 +14,25 @@
 .nav-link,
 .navbar-brand,
 .dropdown-item {
-  color: #C1A5A9;
+  color: #FED18C;
 }
 
 .nav-link:hover,
 .navbar-brand:hover,
 .navbar-toggler:hover {
-  color: #B8DBD9;
+  color: #FE654F;
 }
 
 .navbar-toggler,
 .dropdown-item:hover {
-  background-color: #B8DBD9;
+  background-color: #FE654F;
 }
 
 li {
-  color: #C1A5A9;
+  color: #FED18C;
 }
 li a {
-  color: #C1A5A9;
+  color: #FED18C;
 }
 
 .navbar-collapse {
@@ -41,8 +41,8 @@ li a {
 
 body {
   text-align: center;
-  background-color: #C1A5A9;
-  color: #B8DBD9;
+  background-color: #FED18C;
+  color: #FE654F;
 }
 
 /*# sourceMappingURL=styl.css.map */

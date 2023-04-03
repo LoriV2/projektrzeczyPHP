@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php
 include "rzecz.php";
-$k = "k";
-if (isset($_GET['Strona'])) {
-} else {
-	$_GET['Strona'] = "StronaGłówna";
-}
+	$k = "k";
+	if (isset($_GET['Strona'])) {
+	} else {
+		$_GET['Strona'] = "StronaGłówna";
+	}
 
 
 ?>
