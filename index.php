@@ -45,7 +45,7 @@ if (isset($_GET['Strona'])) {
 						<a class="nav-link" aria-current="page" href="index.php?Strona=StronaGłówna">Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?Strona=Produkty">Koszyk</a>
+						<a class="nav-link" href="index.php?Strona=Koszyk">Koszyk</a>
 					</li>
 					<li class="nav-item">
 						<a href="/index.php?Strona=Dodawanie">
@@ -127,6 +127,9 @@ if (isset($_GET['Strona'])) {
 				break;
 			case "Dodawanie":
 				include "podstrony/dodaj.php";
+				break;
+			case "Koszyk":
+				include "podstrony/Koszyk.php";
 				break;
 			default:
 				echo "Przepraszamy ale strona o nazwie: " . $LINK . " nie istnieje";

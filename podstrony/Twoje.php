@@ -24,9 +24,11 @@ if ($k == "k") {
 </div>
 <div class="tło container">
     <h1>Twoje produkty</h1>
-    <?php
-    while ($row = $result->fetch_assoc()) {
-        echo "<a href='index.php?Strona=Produkty&&ID=".$row['ID']."'>".$row['Tytul']."<br>".$row['Cena']." zł</a><br><br>";
-    }
-    ?>
+    <div class="row row-cols-3 row-cols-md-5 g-4">
+        <?php
+        while ($row = $result->fetch_assoc()) {
+            echo "<a href='index.php?Strona=Produkty&&ID=" . $row['ID'] . "'>" . $row['Tytul'] . "<br>" . $row['Cena'] . " zł</a><br><br>";
+        }
+        ?>
+    </div>
 </div>
