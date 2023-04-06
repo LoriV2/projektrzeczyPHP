@@ -47,6 +47,13 @@ if (isset($_GET['Strona'])) {
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?Strona=Produkty">Koszyk</a>
 					</li>
+					<li class="nav-item">
+						<a href="/index.php?Strona=Dodawanie">
+							<button class="btn">
+								↠ Zacznij sprzedawać ↞
+							</button>
+						</a>
+					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Konto
@@ -84,7 +91,7 @@ if (isset($_GET['Strona'])) {
 	</nav>
 </header>
 
-<body class="">
+<body>
 	<?php
 	function wyswietl($LINK)
 	{

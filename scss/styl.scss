@@ -5,6 +5,7 @@ $thirdary-color: #FE7F2D;
 $list1: #ffd60a 0%, #c95e30c9 100%;
 $list2: #fe7f2d 0%, #f38f64c9 100%;
 $list3: #375d74 0%, #233d4d 100%;
+$list4: #aab5bb 0%, #ffffff 100%;
 
 @mixin gradient($direction, $list) {
     background: -webkit-linear-gradient($direction, $list);
@@ -15,6 +16,17 @@ $list3: #375d74 0%, #233d4d 100%;
 
 * {
     font-size: large;
+}
+
+.row {
+    margin-top: 1vh;
+    margin: 1vh;
+    max-width: 100vw;
+}
+
+.card {
+
+    @include gradient(90deg, $list4);
 }
 
 .tło {
@@ -50,10 +62,15 @@ $list3: #375d74 0%, #233d4d 100%;
     color: $primary-color;
 }
 
+a {
+    text-decoration: none;
+    color: $primary-color;
+}
 
 .nav-link:hover,
 .navbar-brand:hover,
-.navbar-toggler:hover {
+.navbar-toggler:hover,
+a:hover {
     color: $thirdary-color;
 }
 
