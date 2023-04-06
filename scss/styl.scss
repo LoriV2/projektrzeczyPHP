@@ -1,18 +1,47 @@
-$primary-color: #FED18C;
-$secondary-color: #99acb8;
-$thirdary-color: #FE654F;
+$primary-color: #233D4D;
+$secondary-color: #ffd60a;
+$thirdary-color: #FE7F2D;
+
+$list1: #ffd60a 0%, #c95e30c9 100%;
+$list2: #fe7f2d 0%, #f38f64c9 100%;
+$list3: #375d74 0%, #233d4d 100%;
+
+@mixin gradient($direction, $list) {
+    background: -webkit-linear-gradient($direction, $list);
+    background: -moz-linear-gradient($direction, $list);
+    background: -o-linear-gradient($direction, $list);
+    background: linear-gradient($direction, $list);
+}
 
 * {
     font-size: large;
 }
 
+.tło {
+    margin-top: 2vh;
+    border-radius: 2vw;
+    width: auto;
+    @include gradient(90deg, $list1);
+}
+
 .navbar,
 .dropdown-menu {
     color: $primary-color;
-    background-color: $secondary-color;
+    @include gradient(90deg, $list1);
     text-align: center;
     border: none;
     min-width: auto;
+}
+
+.btn {
+    @include gradient(90deg, $list2);
+    color: $primary-color;
+    border-radius: 2vh;
+    width: fit-content;
+}
+
+.btn:hover {
+    color: $secondary-color;
 }
 
 .nav-link,
@@ -30,7 +59,8 @@ $thirdary-color: #FE654F;
 
 .navbar-toggler,
 .dropdown-item:hover {
-    background-color: $thirdary-color;
+    @include gradient(90deg, $list2);
+    ;
 }
 
 li {
@@ -47,6 +77,71 @@ li {
 
 body {
     text-align: center;
-    background-color: $primary-color;
-    color: $thirdary-color;
+    @include gradient(90deg, $list3 );
+
+    .highlight {
+        font-weight: 600;
+    }
+
+    .blok-główny {
+        padding: 2vw;
+        margin-top: 10vh;
+        @include gradient(90deg, $list1);
+        ;
+        color: $primary-color;
+        width: fit-content;
+        margin-left: 10vw;
+        border-radius: 1vw;
+    }
+
+    .formdiv {
+        text-align: -webkit-center;
+        width: 100vw;
+    }
+
+
+    //formularz
+    form {
+        display: block;
+        text-align: center;
+        width: fit-content;
+        margin-top: 10vh;
+        @include gradient(90deg, $list1);
+        color: $primary-color;
+        border-radius: 1vh;
+        padding: 1vw;
+        font-weight: 600;
+
+        .ostatni {
+            margin-top: 4vh;
+        }
+
+
+
+        .mb-3 {
+
+            text-align: -webkit-center;
+        }
+
+        .form-control {
+            max-width: fit-content;
+            border-radius: 2vh;
+        }
+
+        .input-group {
+            max-width: fit-content;
+            text-align: -webkit-center;
+
+            .form-select {
+                border-radius: 2vh;
+                max-width: fit-content;
+                text-align: -webkit-center;
+
+                option:hover {
+                    @include gradient(90deg, $list2);
+                    ;
+                }
+            }
+        }
+    }
 }

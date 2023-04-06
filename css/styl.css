@@ -1,38 +1,69 @@
+@charset "UTF-8";
 * {
   font-size: large;
 }
 
+.tło {
+  margin-top: 2vh;
+  border-radius: 2vw;
+  width: auto;
+  background: -webkit-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+}
+
 .navbar,
 .dropdown-menu {
-  color: #FED18C;
-  background-color: #99acb8;
+  color: #233D4D;
+  background: -webkit-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
   text-align: center;
   border: none;
   min-width: auto;
 }
 
+.btn {
+  background: -webkit-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  color: #233D4D;
+  border-radius: 2vh;
+  width: fit-content;
+}
+
+.btn:hover {
+  color: #ffd60a;
+}
+
 .nav-link,
 .navbar-brand,
 .dropdown-item {
-  color: #FED18C;
+  color: #233D4D;
 }
 
 .nav-link:hover,
 .navbar-brand:hover,
 .navbar-toggler:hover {
-  color: #FE654F;
+  color: #FE7F2D;
 }
 
 .navbar-toggler,
 .dropdown-item:hover {
-  background-color: #FE654F;
+  background: -webkit-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
 }
 
 li {
-  color: #FED18C;
+  color: #233D4D;
 }
 li a {
-  color: #FED18C;
+  color: #233D4D;
 }
 
 .navbar-collapse {
@@ -41,8 +72,68 @@ li a {
 
 body {
   text-align: center;
-  background-color: #FED18C;
-  color: #FE654F;
+  background: -webkit-linear-gradient(90deg, #375d74 0%, #233d4d 100%);
+  background: -moz-linear-gradient(90deg, #375d74 0%, #233d4d 100%);
+  background: -o-linear-gradient(90deg, #375d74 0%, #233d4d 100%);
+  background: linear-gradient(90deg, #375d74 0%, #233d4d 100%);
+}
+body .highlight {
+  font-weight: 600;
+}
+body .blok-główny {
+  padding: 2vw;
+  margin-top: 10vh;
+  background: -webkit-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  color: #233D4D;
+  width: fit-content;
+  margin-left: 10vw;
+  border-radius: 1vw;
+}
+body .formdiv {
+  text-align: -webkit-center;
+  width: 100vw;
+}
+body form {
+  display: block;
+  text-align: center;
+  width: fit-content;
+  margin-top: 10vh;
+  background: -webkit-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #ffd60a 0%, rgba(201, 94, 48, 0.7882352941) 100%);
+  color: #233D4D;
+  border-radius: 1vh;
+  padding: 1vw;
+  font-weight: 600;
+}
+body form .ostatni {
+  margin-top: 4vh;
+}
+body form .mb-3 {
+  text-align: -webkit-center;
+}
+body form .form-control {
+  max-width: fit-content;
+  border-radius: 2vh;
+}
+body form .input-group {
+  max-width: fit-content;
+  text-align: -webkit-center;
+}
+body form .input-group .form-select {
+  border-radius: 2vh;
+  max-width: fit-content;
+  text-align: -webkit-center;
+}
+body form .input-group .form-select option:hover {
+  background: -webkit-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -moz-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: -o-linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
+  background: linear-gradient(90deg, #fe7f2d 0%, rgba(243, 143, 100, 0.7882352941) 100%);
 }
 
 /*# sourceMappingURL=styl.css.map */

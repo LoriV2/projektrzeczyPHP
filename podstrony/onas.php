@@ -1,8 +1,10 @@
 <?php
 include "rzecz.php";
 if ($k == "k") {
+    if (session_id() != NULL) {
+    }
 } else {
-    header("Location: /projektrzeczy/index.php?Strona=StronaGłówna");
+    header("Location: /index.php?Strona=StronaGłówna");
 }
 ?>
 onas

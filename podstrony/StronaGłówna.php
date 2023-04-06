@@ -2,7 +2,13 @@
 include "rzecz.php";
 if ($k == "k") {
 } else {
-    header("Location: /projektrzeczy/index.php?Strona=StronaGłówna");
+    header("Location: /index.php?Strona=StronaGłówna");
 }
 ?>
-<h1>stronagłówna</h1>   
+<div class="blok-główny">
+    <a href="/index.php?Strona=Dodawanie">
+        <button class="btn">
+            ↠ Zacznij sprzedawać ↞
+        </button>
+    </a>
+</div>

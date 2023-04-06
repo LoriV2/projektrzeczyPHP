@@ -2,7 +2,7 @@
 include "rzecz.php";
 if ($k == "k") {
 } else {
-    header("Location: /projektrzeczy/index.php?Strona=StronaGłówna");
+	header("Location: /index.php?Strona=StronaGłówna");
 }
 ?>
 produkty

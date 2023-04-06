@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <?php
+ini_set('session.gc_maxlifetime', 3600);
+session_set_cookie_params(3600);
+session_start();
+session_regenerate_id(true);
 include "rzecz.php";
-	$k = "k";
-	if (isset($_GET['Strona'])) {
-	} else {
-		$_GET['Strona'] = "StronaGłówna";
+$k = "k";
+if (isset($_GET['Strona'])) {
+	if (isset($_GET['Logout'])) {
+		session_destroy();
+		header("Location: index.php");
 	}
+} else {
+	$_GET['Strona'] = "StronaGłówna";
+}
 
 
 ?>
@@ -37,7 +45,7 @@ include "rzecz.php";
 						<a class="nav-link" aria-current="page" href="index.php?Strona=StronaGłówna">Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?Strona=Produkty">Produkty</a>
+						<a class="nav-link" href="index.php?Strona=Produkty">Koszyk</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,9 +53,10 @@ include "rzecz.php";
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<?php
-							if (isset($_SESSION['user'])) {
+							if (isset($_SESSION['id'])) {
+								echo $_SESSION['nazwa'];
 								echo	'<li><a class="dropdown-item" href="index.php?Strona=TwojeKonto">Twoje Konto</a></li>
-										<li><a class="dropdown-item" href="index.php?Strona=Logowanie&&Logout=1">Wyloguj</a></li>';
+										<li><a class="dropdown-item" href="index.php?Strona=StronaGłówna&&Logout">Wyloguj</a></li>';
 							} else {
 								echo	'<li><a class="dropdown-item" href="index.php?Strona=Rejestracja">Rejestracja</a></li>
 										<li><a class="dropdown-item" href="index.php?Strona=Logowanie">Logowanie</a></li>';
@@ -75,7 +84,7 @@ include "rzecz.php";
 	</nav>
 </header>
 
-<body style="padding-bottom:10000px">
+<body class="">
 	<?php
 	function wyswietl($LINK)
 	{
@@ -108,6 +117,9 @@ include "rzecz.php";
 				break;
 			case "Onas":
 				include "podstrony/onas.php";
+				break;
+			case "Dodawanie":
+				include "podstrony/dodaj.php";
 				break;
 			default:
 				echo "Przepraszamy ale strona o nazwie: " . $LINK . " nie istnieje";
