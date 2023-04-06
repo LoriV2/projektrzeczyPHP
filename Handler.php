@@ -9,7 +9,7 @@ if (!empty($_POST)) {
             $a = hash('sha256', $_POST['Login']);
             $b = hash('sha256', $_POST['Pswrd']);
 
-            $query = "SELECT * FROM `uzytkownicy` WHERE Login = '$a' && Haslo = '$b'";
+            $query = "SELECT `Id` , `Rola` , `Nazwa` , `Data_dolaczenia` , `Profilowe` FROM `uzytkownicy` WHERE Login = '$a' && Haslo = '$b'";
 
             $DB = mysqli_connect(
                 'localhost',
@@ -20,7 +20,6 @@ if (!empty($_POST)) {
 
             if (mysqli_num_rows(mysqli_query($DB, $query)) > 0) {
                 //dostaje login
-                $query = "SELECT `Id` , `Rola` , `Nazwa` , `Data_dolaczenia` , `Profilowe` FROM `uzytkownicy` WHERE Login = '$a' && Haslo = '$b'";
                 $result = mysqli_query($DB, $query);
                 $result = mysqli_fetch_assoc($result);
                 $query = "INSERT INTO `sesje` VALUES ('', $result[Id] ,CURRENT_TIMESTAMP() , ADDTIME(CURRENT_TIMESTAMP(), ' 1:0:0.000'))";
@@ -68,7 +67,7 @@ if (!empty($_POST)) {
 
             break;
         case "Dodawanie":
-            
+
             break;
     }
 } else {
