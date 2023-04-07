@@ -10,9 +10,33 @@ if (($k == "k") && (isset($_GET['ID']))) {
 	$query = "SELECT * FROM produkty WHERE ID = '$_GET[ID]'";
 	$result = mysqli_query($DB, $query);
 	while ($row = $result->fetch_assoc()) {
-		echo $row['Tytul'];
-		echo $row['Opis'];
-		echo $row['Cena'];
+		echo "
+		<div class='container tło-produkt'>
+			<div class='row'>
+    			<div class='col'>
+      				" . $row['Tytul'] . "
+    			</div>
+			</div>
+  			<div class='row'>
+    			<div class='col'>
+				<img class='img-fluid' src='podstrony/zdjecia/produkty/" . $row['Zdjecie'] . "' />
+    			</div>
+				<div class='col'>
+				" . $row['Cena'] . " zł <br>
+				<button class='btn'>Dodaj do koszyka</button>
+				</div>
+  			</div>
+			<div class='row'>
+				<div class='col'>
+				Opis produktu:  <br>
+					" . $row['Opis'] . "
+				</div>
+				<div class='col'>
+					
+				</div>
+			</div>
+		</div>
+		";
 	}
 } else {
 	header("Location: /index.php?Strona=StronaGłówna");

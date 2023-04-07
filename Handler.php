@@ -69,16 +69,6 @@ if (!empty($_POST)) {
 				header("Location: index.php?Strona=Rejestracja&&Rejestracja=1");
 			}
 			break;
-
-		case "Produkt":
-			$DB = mysqli_connect(
-				$Database_Host,
-				$Database_User,
-				$Database_Pssss,
-				$Database_name
-			);
-			$query = "SELECT * FROM produkty WHERE ID = '$_GET[ID]'";
-			break;
 		case "Dodawanie":
 			$DB = mysqli_connect(
 				$Database_Host,
@@ -86,10 +76,51 @@ if (!empty($_POST)) {
 				$Database_Pssss,
 				$Database_name
 			);
-			$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena) VALUES ('', '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]')";
-			mysqli_query($DB, $query);
-			mysqli_close($DB);
-			header("Location: index.php?Strona=TwojeKonto");
+			if (is_uploaded_file($_FILES['zdjecie']['tmp_name'])) {
+				//Stores the filename as it was on the client computer.
+				$imagename = $_FILES['zdjecie']['name'];
+				//Stores the filetype e.g image/jpeg
+				$imagetype = $_FILES['zdjecie']['type'];
+				//Stores any error codes from the upload.
+				$imageerror = $_FILES['zdjecie']['error'];
+				//Stores the tempname as it is given by the host when uploaded.
+				$imagetemp = $_FILES['zdjecie']['tmp_name'];
+				
+				$prod = "";
+				
+				//The path you wish to upload the image to
+				$imagePath = "podstrony/zdjecia/produkty/";
+				
+				$extension = end(explode(".", $imagename));
+				
+				$query = "SELECT ID FROM produkty ORDER BY ID DESC LIMIT 1";
+				
+				$result = mysqli_query($DB, $query);
+				
+				while ($row = $result->fetch_assoc()) {
+					$prod = $row['ID'];
+				}
+				$newfilename = $prod . "." . $extension;
+				
+				$imagename = $newfilename;
+				
+				$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena , Zdjecie) VALUES ('', '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]' , '$newfilename')";
+				
+				mysqli_query($DB, $query);
+				
+				mysqli_close($DB);
+				header("Location: index.php?Strona=TwojeKonto");
+				if (is_uploaded_file($imagetemp)) {
+					if (move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+						echo "Sussecfully uploaded your image.";
+					} else {
+						echo "Failed to move your image.";
+					}
+				} else {
+					echo "Failed to upload your image.";
+				}
+			}
+
 			break;
 	}
 } else {

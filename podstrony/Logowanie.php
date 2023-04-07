@@ -10,7 +10,7 @@ if (isset($_GET['Logout'])) {
 
 ?>
 <div class="formdiv container justify-content-center">
-    <form class="justify-content-center" method="POST" action="Handler.php?Rzecz=Logowanie">
+    <form class="form-rzeczy justify-content-center" method="POST" action="Handler.php?Rzecz=Logowanie">
         <div class="mb-3">
             <label name="Logowanie" class="form-label">Login</label>
             <input type="text" name="Login" class="form-control">

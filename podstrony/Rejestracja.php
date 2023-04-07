@@ -6,7 +6,7 @@ if ($k == "k") {
 }
 ?>
 <div class="formdiv container">
-	<form class="justify-content-center" method="POST" action="Handler.php?Rzecz=Rejestracja">
+	<form class="form-rzeczy justify-content-center" method="POST" action="Handler.php?Rzecz=Rejestracja">
 		<div class="mb-3">
 			<label name="Logowanie" class="form-label">Login</label>
 			<input type="text" name="Login" class="form-control" required>

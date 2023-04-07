@@ -25,7 +25,8 @@ $list4: #aab5bb 0%, #ffffff 100%;
 }
 
 .card {
-
+    border: none;
+    border-radius: 2vh;
     @include gradient(90deg, $list4);
 }
 
@@ -34,6 +35,15 @@ $list4: #aab5bb 0%, #ffffff 100%;
     border-radius: 2vw;
     width: auto;
     @include gradient(90deg, $list1);
+}
+img{
+    border-radius: 2vh;
+}
+.tło-produkt {
+    margin-top: 2vh;
+    border-radius: 2vw;
+    width: auto;
+    @include gradient(90deg, $list4);
 }
 
 .navbar,
@@ -118,7 +128,7 @@ body {
 
 
     //formularz
-    form {
+    .form-rzeczy {
         display: block;
         text-align: center;
         width: fit-content;

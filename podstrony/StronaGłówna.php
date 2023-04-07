@@ -16,17 +16,17 @@ function  produkty(
 		$Database_Pssss,
 		$Database_name
 	);
-	$query = "SELECT `Tytul` , `Opis`, `Cena`, `ID` FROM produkty";
+	$query = "SELECT `Tytul` , `Opis`, `Cena`, `ID` , `Zdjecie` FROM produkty";
 	$result = mysqli_query($DB, $query);
 	while ($row = $result->fetch_assoc()) {
-		echo '<a href= "index.php?Strona=Produkty&&ID='.$row['ID'].'">
+		echo '<a href= "index.php?Strona=Produkty&&ID=' . $row['ID'] . '">
 			<div class="col">
 				<div class="card">
-					<img src="..." class="card-img-top" alt="...">
+				<img class="img-fluid" src="podstrony/zdjecia/produkty/' . $row["Zdjecie"] . '" />
 					<div class="card-body">
 						<h5 class="card-title">' . $row['Tytul'] . '</h5>
 						<p class="card-text">' . $row['Opis'] . '</p>
-						'.$row['Cena'].' zł
+						' . $row['Cena'] . ' zł
 					</div>
 				</div>
 				</div>
