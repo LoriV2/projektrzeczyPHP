@@ -1,6 +1,7 @@
 <?php
 include "rzecz.php";
 if ($k == "k") {
+	
 } else {
 	header("Location: /index.php?Strona=StronaGłówna");
 }
@@ -16,34 +17,40 @@ function  produkty(
 		$Database_Pssss,
 		$Database_name
 	);
-	$query = "SELECT `Tytul` , `Opis`, `Cena`, `ID` , `Zdjecie` FROM produkty";
+	$query = "SELECT `Tytul` , `Opis`, `Cena`, `ID` , `Zdjecie` , `Tagi` FROM produkty";
 	$result = mysqli_query($DB, $query);
 	while ($row = $result->fetch_assoc()) {
-		echo '<a href= "index.php?Strona=Produkty&&ID=' . $row['ID'] . '">
-			<div class="col">
-				<div class="card">
+		echo '
+				<td  class="card Nazwa">
+				<a href= "index.php?Strona=Produkty&&ID=' . $row['ID'] . '">
 				<img class="img-fluid" src="podstrony/zdjecia/produkty/' . $row["Zdjecie"] . '" />
+					<div class="niewidzialny">
+					
+					</div>
 					<div class="card-body">
-						<h5 class="card-title">' . $row['Tytul'] . '</h5>
-						<p class="card-text">' . $row['Opis'] . '</p>
+						<h5 class="card-title Nazwa">' . $row['Tytul'] . '</h5>
+						<p class="card-text"></p>
 						' . $row['Cena'] . ' zł
 					</div>
-				</div>
-				</div>
-				</a>';
+					</a>
+				</td>
+				
+				';
 	}
 }
 ?>
 
-<div>
-	<div class="row row-cols-3 row-cols-md-5 g-4">
-		<?php
-		echo produkty(
-			$Database_Host,
-			$Database_User,
-			$Database_Pssss,
-			$Database_name
-		);
-		?>
-	</div>
-</div>
+<table>
+	<tbody class="list container-fluid">
+		<tr>
+			<?php
+			echo produkty(
+				$Database_Host,
+				$Database_User,
+				$Database_Pssss,
+				$Database_name
+			);
+			?>
+		</tr>
+	</tbody>
+</table>

@@ -22,15 +22,23 @@ if (($k == "k") && (isset($_GET['ID']))) {
 				<img class='img-fluid' src='podstrony/zdjecia/produkty/" . $row['Zdjecie'] . "' />
     			</div>
 				<div class='col'>
-				" . $row['Cena'] . " zł <br>
-				<button class='btn'>Dodaj do koszyka</button>
-				</div>
-  			</div>
-			<div class='row'>
-				<div class='col'>
+				" . $row['Cena'] . " zł <br>";
+		if (isset($_SESSION['id'])) {
+			echo "<a href='index.php?Strona=Koszyk&&ID=" . $_GET['ID'] . "'><button  class='btn'>Dodaj do koszyka</button></a>";
+		} else {
+			echo "<a href='index.php?Strona=Logowanie'><button  class='btn'>Zaloguj się</button></a>";
+		}
+
+		echo "<div class='col'>
 				Opis produktu:  <br>
 					" . $row['Opis'] . "
 				</div>
+				<br>
+				<div>Tagi: <br>" . $row['Tagi'] . "</div>
+				</div>
+  			</div>
+			<div class='row'>
+				
 				<div class='col'>
 					
 				</div>

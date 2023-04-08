@@ -32,10 +32,14 @@ if (!empty($_POST)) {
 				mysqli_query($DB, $query);
 				mysqli_close($DB);
 				//dostaje login
+				
 				$_SESSION['id'] = $result['Id'];
 				$_SESSION['user'] = $result['Rola'];
 				$_SESSION['nazwa'] = $result['Nazwa'];
 				$_SESSION['data'] = $result['Data_dolaczenia'];
+				$_SESSION['zakupy'] = array();
+				$_SESSION['poprzedni'] = 0;
+
 				session_regenerate_id(true);
 				header("Location: index.php?Strona=TwojeKonto");
 				session_write_close();
@@ -85,29 +89,29 @@ if (!empty($_POST)) {
 				$imageerror = $_FILES['zdjecie']['error'];
 				//Stores the tempname as it is given by the host when uploaded.
 				$imagetemp = $_FILES['zdjecie']['tmp_name'];
-				
+
 				$prod = "";
-				
+
 				//The path you wish to upload the image to
 				$imagePath = "podstrony/zdjecia/produkty/";
-				
+
 				$extension = end(explode(".", $imagename));
-				
+
 				$query = "SELECT ID FROM produkty ORDER BY ID DESC LIMIT 1";
-				
+
 				$result = mysqli_query($DB, $query);
-				
+
 				while ($row = $result->fetch_assoc()) {
 					$prod = $row['ID'];
 				}
 				$newfilename = $prod . "." . $extension;
-				
+
 				$imagename = $newfilename;
-				
-				$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena , Zdjecie) VALUES ('', '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]' , '$newfilename')";
-				
+
+				$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena , Zdjecie , Tagi) VALUES ('', '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]' , '$newfilename' , '$_POST[Tagi]')";
+
 				mysqli_query($DB, $query);
-				
+
 				mysqli_close($DB);
 				header("Location: index.php?Strona=TwojeKonto");
 				if (is_uploaded_file($imagetemp)) {

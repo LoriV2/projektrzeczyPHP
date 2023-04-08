@@ -24,10 +24,44 @@ $list4: #aab5bb 0%, #ffffff 100%;
     max-width: 100vw;
 }
 
+.niewidzialny {
+    display: none;
+}
+
+td {
+    float: left;
+    margin: 2vh;
+
+    img {
+        min-height: 200px;
+        max-height: 200px;
+    }
+}
+
 .card {
+    min-width: 200px;
+    max-width: 200px;
     border: none;
     border-radius: 2vh;
     @include gradient(90deg, $list4);
+}
+
+.koszyk {
+    @include gradient(90deg, $list4);
+    width: 100vw;
+    text-align: left;
+
+    img {
+        min-height: 140px;
+        max-height: 140px;
+        min-width: 140px;
+        max-width: 140px;
+    }
+}
+
+table {
+    width: 100vw;
+    align-items: center;
 }
 
 .tło {
@@ -36,9 +70,12 @@ $list4: #aab5bb 0%, #ffffff 100%;
     width: auto;
     @include gradient(90deg, $list1);
 }
-img{
+
+img {
+    min-width: 200px;
     border-radius: 2vh;
 }
+
 .tło-produkt {
     margin-top: 2vh;
     border-radius: 2vw;
