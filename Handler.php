@@ -10,6 +10,31 @@ if (!empty($_POST)) {
 	$Database_Pssss = '';
 	$Database_name = 'o_o';
 	switch ($_GET['Rzecz']) {
+		case "Wniosek":
+
+			break;
+
+
+		case "Zamówienie":
+			$DB = mysqli_connect(
+				$Database_Host,
+				$Database_User,
+				$Database_Pssss,
+				$Database_name
+			);
+			foreach ($_SESSION['zakupy'] as $produkt) {
+				$query = "SELECT Cena FROM produkty WHERE ID = '$produkt[0]'";
+				$result = mysqli_query($DB, $query);
+				while ($row = $result->fetch_assoc()) {
+					$cena = $row['Cena'];
+				}
+				$query = "INSERT INTO `zamowienia` VALUES ('','$produkt[0]','$_POST[adres]' , '$cena' , curdate() , 1 , '$_SESSION[id]')";
+				mysqli_query($DB, $query);
+			}
+			mysqli_close($DB);
+			unset($_SESSION["zakupy"]);
+			header("Location: index.php?Strona=TwojeKonto");
+			break;
 
 		case "Logowanie":
 			$a = hash('sha256', $_POST['Login']);
@@ -32,7 +57,7 @@ if (!empty($_POST)) {
 				mysqli_query($DB, $query);
 				mysqli_close($DB);
 				//dostaje login
-				
+
 				$_SESSION['id'] = $result['Id'];
 				$_SESSION['user'] = $result['Rola'];
 				$_SESSION['nazwa'] = $result['Nazwa'];
@@ -73,6 +98,7 @@ if (!empty($_POST)) {
 				header("Location: index.php?Strona=Rejestracja&&Rejestracja=1");
 			}
 			break;
+
 		case "Dodawanie":
 			$DB = mysqli_connect(
 				$Database_Host,
@@ -81,18 +107,18 @@ if (!empty($_POST)) {
 				$Database_name
 			);
 			if (is_uploaded_file($_FILES['zdjecie']['tmp_name'])) {
-				//Stores the filename as it was on the client computer.
+
 				$imagename = $_FILES['zdjecie']['name'];
-				//Stores the filetype e.g image/jpeg
+
 				$imagetype = $_FILES['zdjecie']['type'];
-				//Stores any error codes from the upload.
+
 				$imageerror = $_FILES['zdjecie']['error'];
-				//Stores the tempname as it is given by the host when uploaded.
+
 				$imagetemp = $_FILES['zdjecie']['tmp_name'];
 
 				$prod = "";
 
-				//The path you wish to upload the image to
+
 				$imagePath = "podstrony/zdjecia/produkty/";
 
 				$extension = end(explode(".", $imagename));

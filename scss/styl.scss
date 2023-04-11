@@ -18,6 +18,18 @@ $list4: #aab5bb 0%, #ffffff 100%;
     font-size: large;
 }
 
+thead {
+    text-align: center
+}
+
+.search {
+    @include gradient(90deg, $list4);
+    width: fit-content;
+    margin-top: 2vh;
+
+}
+
+
 .row {
     margin-top: 1vh;
     margin: 1vh;
@@ -46,9 +58,15 @@ td {
     @include gradient(90deg, $list4);
 }
 
+tr {
+    width: fit-content;
+    float: left;
+}
+
 .koszyk {
     @include gradient(90deg, $list4);
-    width: 100vw;
+    padding: 1vw;
+    width: fit-content;
     text-align: left;
 
     img {

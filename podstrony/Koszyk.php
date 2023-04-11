@@ -1,6 +1,10 @@
 <?php
 include "rzecz.php";
 if ($k == "k") {
+    if (isset($_SESSION['id'])) {
+    } else {
+        header("Location: /index.php?Strona=Logowanie");
+    }
     if (isset($_GET['ID']) || isset($_SESSION['zakupy'])) {
         if (isset($_GET['ID']) && ($_GET['ID'] != $_SESSION['poprzedni'])) {
             $array = array($_GET['ID']);
@@ -18,7 +22,12 @@ if ($k == "k") {
             $query = "SELECT `Tytul` , `Cena` , `Zdjecie` FROM produkty WHERE ID = '$produkt[0]'";
             $result = mysqli_query($DB, $query);
             while ($row = $result->fetch_assoc()) {
-                echo "<div class='koszyk'><a href='index.php?Strona=Produkty&&ID=" . $produkt[0] . "'><img class='img-fluid' src='podstrony/zdjecia/produkty/" . $row["Zdjecie"] . "' /> " . $row['Tytul'] . " " . $row['Cena'] . " zł</div>";
+                echo "<div class='koszyk'
+                ><a href='index.php?Strona=Produkty&&ID=" . $produkt[0] . "'>
+                <img class='img-fluid' src='podstrony/zdjecia/produkty/" . $row["Zdjecie"] . "' /> "
+                    . $row['Tytul'] . " "
+                    . $row['Cena'] .
+                    " zł</a></div>";
             }
         }
     } else {
@@ -29,4 +38,9 @@ if ($k == "k") {
 }
 ?>
 <div>
+    <form action="Handler.php?Rzecz=Zamówienie" class="formdiv form-rzeczy" method="POST">
+        <input name="adres" class="form-control" type="text" placeholder="adres zamieszkania" required />
+        <button type="submit" class="btn"> Zamów </button>
+    </form>
+
 </div>

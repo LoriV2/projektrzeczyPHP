@@ -73,7 +73,14 @@ if (isset($_GET['Strona'])) {
 						</ul>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?Strona=Koszyk">Dołącz do nas!</a>
+						<?php
+						if (isset($_SESSION['user']) && ($_SESSION['user'] == "administrator")) {
+							echo '<a class="nav-link" href="index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
+						} else {
+							echo '<a class="nav-link" href="index.php?Strona=Dołącz">Dołącz do nas!</a>';
+						}
+						?>
+
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?Strona=Onas">O nas</a>
@@ -102,8 +109,17 @@ if (isset($_GET['Strona'])) {
 			case "StronaGłówna":
 				include "podstrony/StronaGłówna.php";
 				break;
+			case "Dołącz":
+				include "podstrony/FormularzPracownika.php";
+				break;
+
 			case "Logowanie":
 				include "podstrony/Logowanie.php";
+				break;
+			case "Zgłoszenia":
+				if ($_SESSION['user'] == "administrator") {
+					include "podstrony/Zgloszenia.php";
+				}
 				break;
 			case "Produkty":
 				include "podstrony/Produkty.php";
