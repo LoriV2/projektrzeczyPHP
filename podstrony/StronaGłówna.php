@@ -20,7 +20,7 @@ function  produkty(
 	$result = mysqli_query($DB, $query);
 	while ($row = $result->fetch_assoc()) {
 		echo '<tr>
-				<td  class="card Nazwa">
+				<td  class="card">
 				<a href= "index.php?Strona=Produkty&&ID=' . $row['ID'] . '">
 				<img class="img-fluid" src="podstrony/zdjecia/produkty/' . $row["Zdjecie"] . '" />
 					<div class="niewidzialny">

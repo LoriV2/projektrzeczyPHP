@@ -30,7 +30,7 @@ if ($k == "k") {
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea" class="form-label">Tagi (pisz po przecinku)</label>
-			<textarea placeholder="Nowy, Rzeczny, Niebezpieczny" class="form-control" name="Tagi" id="exampleFormControlTextarea" rows="3" required></textarea>
+			<textarea placeholder="Nowy , Rzeczny , Niebezpieczny" class="form-control" name="Tagi" id="exampleFormControlTextarea" rows="3" required maxlength="30"></textarea>
 		</div>
 		<button type="submit" class="btn">Dodaj produkt</button>
 	</form>

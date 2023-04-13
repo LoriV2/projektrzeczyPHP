@@ -76,6 +76,10 @@ if (isset($_GET['Strona'])) {
 						<?php
 						if (isset($_SESSION['user']) && ($_SESSION['user'] == "administrator")) {
 							echo '<a class="nav-link" href="index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
+						} else if ($_SESSION['user'] == "pracownik") {
+							echo '<li class="nav-item">
+								<a class="nav-link" href="index.php?Strona=Zamówienia">Zamówienia</a>
+								</li>';
 						} else {
 							echo '<a class="nav-link" href="index.php?Strona=Dołącz">Dołącz do nas!</a>';
 						}
@@ -85,15 +89,6 @@ if (isset($_GET['Strona'])) {
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?Strona=Onas">O nas</a>
 					</li>
-					<?php
-					if (isset($_SESSION['user'])) {
-						if ($_SESSION['user'] == "Pracownik") {
-							echo '<li class="nav-item">
-								<a class="nav-link" href="index.php?Strona=Zamówienia&&id=' . $_SESSION['userid'] . '">Zamówienia</a>
-								</li>';
-						}
-					}
-					?>
 
 				</ul>
 			</div>

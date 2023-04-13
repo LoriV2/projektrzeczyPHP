@@ -11,6 +11,16 @@ if (!empty($_POST)) {
 	$Database_name = 'o_o';
 	switch ($_GET['Rzecz']) {
 		case "Wniosek":
+			$DB = mysqli_connect(
+				$Database_Host,
+				$Database_User,
+				$Database_Pssss,
+				$Database_name
+			);
+			$stmt = mysqli_prepare($DB, "INSERT INTO wnioski (Uzytkownik,Kilka_slow,Czemu)
+		VALUES ( ? , ?, ?)");
+			$stmt->bind_param('iss', $_SESSION['id'], $_POST['Kilka'], $_POST['Czemu']);
+			$stmt->execute();
 
 			break;
 
@@ -143,11 +153,7 @@ if (!empty($_POST)) {
 				if (is_uploaded_file($imagetemp)) {
 					if (move_uploaded_file($imagetemp, $imagePath . $imagename)) {
 						echo "Sussecfully uploaded your image.";
-					} else {
-						echo "Failed to move your image.";
 					}
-				} else {
-					echo "Failed to upload your image.";
 				}
 			}
 
