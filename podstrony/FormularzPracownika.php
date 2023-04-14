@@ -18,5 +18,12 @@ if ($k == "k") {
             <textarea class="form-control" name="Czemu" id="exampleFormControlTextarea1" rows="3" required></textarea>
         </div>
         <button type="submit" class="btn">Wyślij zgłoszenie</button>
+        <br>
+        <?php
+        if (isset($_GET['D'])) {
+            echo $_GET['D'];
+        }
+        ?>
     </form>
+
 </div>

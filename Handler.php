@@ -17,10 +17,17 @@ if (!empty($_POST)) {
 				$Database_Pssss,
 				$Database_name
 			);
-			$stmt = mysqli_prepare($DB, "INSERT INTO wnioski (Uzytkownik,Kilka_slow,Czemu)
-		VALUES ( ? , ?, ?)");
-			$stmt->bind_param('iss', $_SESSION['id'], $_POST['Kilka'], $_POST['Czemu']);
-			$stmt->execute();
+			$query = "SELECT * FROM wnioski WHERE Uzytkownik = '$_SESSION[id]'";
+			$result = mysqli_query($DB, $query);
+			if (mysqli_fetch_row($result) == 0) {
+				$stmt = mysqli_prepare($DB, "INSERT INTO wnioski (Uzytkownik,Kilka_slow,Czemu)
+				VALUES ( ? , ?, ?)");
+				$stmt->bind_param('iss', $_SESSION['id'], $_POST['Kilka'], $_POST['Czemu']);
+				$stmt->execute();
+				header("Location: index.php?Strona=Dołącz&&D=Pomyślnie Wysłano Zgłoszenie");
+			} else {
+				header("Location: index.php?Strona=Dołącz&&D=Już wysłałeś zgłoszenie");
+			}
 
 			break;
 
