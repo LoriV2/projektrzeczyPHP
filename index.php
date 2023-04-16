@@ -9,7 +9,7 @@ $k = "k";
 if (isset($_GET['Strona'])) {
 	if (isset($_GET['Logout'])) {
 		session_destroy();
-		header("Location: index.php");
+		header("Location: /index.php");
 	}
 } else {
 	$_GET['Strona'] = "StronaGłówna";
@@ -35,17 +35,17 @@ if (isset($_GET['Strona'])) {
 <header>
 	<nav class="navbar navbar-expand-lg ">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="index.php?Strona=StronaGłówna">O_O</a>
+			<a class="navbar-brand" href="/index.php?Strona=StronaGłówna">O_O</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">|||</span>
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="index.php?Strona=StronaGłówna">Strona główna</a>
+						<a class="nav-link" aria-current="page" href="/index.php?Strona=StronaGłówna">Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?Strona=Koszyk">Koszyk</a>
+						<a class="nav-link" href="/index.php?Strona=Koszyk">Koszyk</a>
 					</li>
 					<li class="nav-item">
 						<a href="/index.php?Strona=Dodawanie">
@@ -62,11 +62,11 @@ if (isset($_GET['Strona'])) {
 							<?php
 							if (isset($_SESSION['id'])) {
 								echo $_SESSION['nazwa'];
-								echo	'<li><a class="dropdown-item" href="index.php?Strona=TwojeKonto">Twoje Konto</a></li>
-										<li><a class="dropdown-item" href="index.php?Strona=StronaGłówna&&Logout">Wyloguj</a></li>';
+								echo	'<li><a class="dropdown-item" href="/index.php?Strona=TwojeKonto">Twoje Konto</a></li>
+										<li><a class="dropdown-item" href="/index.php?Strona=StronaGłówna&&Logout">Wyloguj</a></li>';
 							} else {
-								echo	'<li><a class="dropdown-item" href="index.php?Strona=Rejestracja">Rejestracja</a></li>
-										<li><a class="dropdown-item" href="index.php?Strona=Logowanie">Logowanie</a></li>';
+								echo	'<li><a class="dropdown-item" href="/index.php?Strona=Rejestracja">Rejestracja</a></li>
+										<li><a class="dropdown-item" href="/index.php?Strona=Logowanie">Logowanie</a></li>';
 							}
 							?>
 
@@ -74,6 +74,7 @@ if (isset($_GET['Strona'])) {
 					</li>
 					<li class="nav-item">
 						<?php
+<<<<<<< Updated upstream
 						if (isset($_SESSION['id'])) {
 							if (($_SESSION['user'] == "administrator")) {
 								echo '<a class="nav-link" href="index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
@@ -83,13 +84,24 @@ if (isset($_GET['Strona'])) {
 								</li>';
 							} else {
 								echo '<a class="nav-link" href="index.php?Strona=Dołącz">Dołącz do nas!</a>';
+=======
+						if (isset($_SESSION['user'])) {
+							if (($_SESSION['user'] == "administrator")) {
+								echo '<a class="nav-link" href="/index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
+							} else if ($_SESSION['user'] == "pracownik") {
+								echo '<li class="nav-item">
+								<a class="nav-link" href="/index.php?Strona=Zamówienia">Zamówienia</a>
+								</li>';
+							} else {
+								echo '<a class="nav-link" href="/index.php?Strona=Dołącz">Dołącz do nas!</a>';
+>>>>>>> Stashed changes
 							}
 						}
 						?>
 
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?Strona=Onas">O nas</a>
+						<a class="nav-link" href="/index.php?Strona=Onas">O nas</a>
 					</li>
 
 				</ul>
@@ -120,6 +132,9 @@ if (isset($_GET['Strona'])) {
 				break;
 			case "Produkty":
 				include "podstrony/Produkty.php";
+				break;
+			case "Zamówienie":
+				include "podstrony/Zamówienie.php";
 				break;
 			case "Zamówienia":
 				if (isset($_SESSION['user'])) {

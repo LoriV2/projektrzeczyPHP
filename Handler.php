@@ -2,7 +2,7 @@
 ini_set('session.gc_maxlifetime', 3600);
 session_set_cookie_params(3600);
 session_start();
-
+session_regenerate_id(true);
 
 if (!empty($_POST)) {
 	$Database_Host = 'localhost';
@@ -17,6 +17,7 @@ if (!empty($_POST)) {
 				$Database_Pssss,
 				$Database_name
 			);
+<<<<<<< Updated upstream
 			$query = "SELECT * FROM wnioski WHERE Uzytkownik = '$_SESSION[id]'";
 			$result = mysqli_query($DB, $query);
 			if (mysqli_fetch_row($result) == 0) {
@@ -29,6 +30,13 @@ if (!empty($_POST)) {
 				header("Location: index.php?Strona=Dołącz&&D=Już wysłałeś zgłoszenie");
 			}
 
+=======
+			$stmt = mysqli_prepare($DB, "INSERT INTO wnioski (Uzytkownik,Kilka_slow,Czemu)
+		VALUES ( ? , ?, ?)");
+			$stmt->bind_param('iss', $_SESSION['id'], $_POST['Kilka'], $_POST['Czemu']);
+			$stmt->execute();
+			header("Location: /index.php?Strona=TwojeKonto");
+>>>>>>> Stashed changes
 			break;
 
 
@@ -45,19 +53,20 @@ if (!empty($_POST)) {
 				while ($row = $result->fetch_assoc()) {
 					$cena = $row['Cena'];
 				}
-				$query = "INSERT INTO `zamowienia` VALUES ('','$produkt[0]','$_POST[adres]' , '$cena' , curdate() , 1 , '$_SESSION[id]')";
+				$query = "INSERT INTO `zamowienia` VALUES (NULL,'$produkt[0]','$_POST[adres]' , '$cena' , curdate() , 1 , '$_SESSION[id]')";
 				mysqli_query($DB, $query);
 			}
 			mysqli_close($DB);
-			unset($_SESSION["zakupy"]);
-			header("Location: index.php?Strona=TwojeKonto");
+			$_SESSION['zakupy'] = array();
+			$_SESSION['poprzedni'] = NULL;
+			header("Location: /index.php?Strona=TwojeKonto");
 			break;
 
 		case "Logowanie":
 			$a = hash('sha256', $_POST['Login']);
 			$b = hash('sha256', $_POST['Pswrd']);
 
-			$query = "SELECT `Id` , `Rola` , `Nazwa` , `Data_dolaczenia` , `Profilowe` FROM `uzytkownicy` WHERE Login = '$a' && Haslo = '$b'";
+			$query = "SELECT `Id` , `Rola` , `Nazwa` , `Data_dolaczenia`  FROM `uzytkownicy` WHERE Login = '$a' && Haslo = '$b'";
 
 			$DB = mysqli_connect(
 				$Database_Host,
@@ -70,7 +79,7 @@ if (!empty($_POST)) {
 				//dostaje login
 				$result = mysqli_query($DB, $query);
 				$result = mysqli_fetch_assoc($result);
-				$query = "INSERT INTO `sesje` VALUES ('', $result[Id] ,CURRENT_TIMESTAMP() , ADDTIME(CURRENT_TIMESTAMP(), ' 1:0:0.000'))";
+				$query = "INSERT INTO `sesje` VALUES (NULL, $result[Id] ,CURRENT_TIMESTAMP() , ADDTIME(CURRENT_TIMESTAMP(), ' 1:0:0.000'))";
 				mysqli_query($DB, $query);
 				mysqli_close($DB);
 				//dostaje login
@@ -82,12 +91,12 @@ if (!empty($_POST)) {
 				$_SESSION['zakupy'] = array();
 				$_SESSION['poprzedni'] = 0;
 
-				session_regenerate_id(true);
-				header("Location: index.php?Strona=TwojeKonto");
+
+				header("Location: /index.php?Strona=TwojeKonto");
 				session_write_close();
 				exit;
 			} else {
-				header("Location: index.php?Strona=Logowanie&&Logowanie=2");
+				header("Location: /index.php?Strona=Logowanie&&Logowanie=2");
 			}
 			break;
 
@@ -104,15 +113,17 @@ if (!empty($_POST)) {
 			$query = "SELECT * FROM uzytkownicy WHERE Login = '$L'";
 			if (mysqli_num_rows(mysqli_query($DB, $query)) > 0) {
 				mysqli_close($DB);
-				header("Location: index.php?Strona=Rejestracja&&Rejestracja=2");
+				header("Location: /index.php?Strona=Rejestracja&&Rejestracja=2");
 			} else {
 
-				$query = "INSERT INTO uzytkownicy(Id, Login , Haslo , Nazwa , Data_dolaczenia ,  Rola) VALUES ('', '$L' , '$Pass', '$_POST[Nazwa]' ,  curdate()  , 1)";
-				mysqli_query($DB, $query);
-				$query = "SELECT Id FROM uzytkownicy WHERE Login = '$L'";
-				$result = mysqli_fetch_assoc(mysqli_query($DB, $query));
+				$query = "INSERT INTO uzytkownicy (Id, Login , Haslo , Nazwa , Data_dolaczenia ,  Rola) VALUES (NULL, '$L' , '$Pass', '$_POST[Nazwa]' ,  curdate()  , 1)";
+				$success = mysqli_query($DB, $query);
+				if (!$success) {
+					header("Location: /index.php?Strona=Rejestracja&&Rejestracja=2");
+				} else {
+					header("Location: /index.php?Strona=Rejestracja&&Rejestracja=1");
+				}
 				mysqli_close($DB);
-				header("Location: index.php?Strona=Rejestracja&&Rejestracja=1");
 			}
 			break;
 
@@ -132,40 +143,41 @@ if (!empty($_POST)) {
 				$imageerror = $_FILES['zdjecie']['error'];
 
 				$imagetemp = $_FILES['zdjecie']['tmp_name'];
+				$imagesize = $_FILES['zdjecie']['size'];
 
 				$prod = "";
-
+				$q = ".";
 
 				$imagePath = "podstrony/zdjecia/produkty/";
+				if ((($imagetype == "image/jpeg") || ($imagetype == "image/png") || ($imagetype == "image/jpg")) && ($imagesize < 8000000)) {
+					$extension = end(explode($q, $imagename));
+					$query = "SELECT ID FROM produkty ORDER BY ID DESC LIMIT 1";
 
-				$extension = end(explode(".", $imagename));
+					$result = mysqli_query($DB, $query);
 
-				$query = "SELECT ID FROM produkty ORDER BY ID DESC LIMIT 1";
-
-				$result = mysqli_query($DB, $query);
-
-				while ($row = $result->fetch_assoc()) {
-					$prod = $row['ID'];
-				}
-				$newfilename = $prod . "." . $extension;
-
-				$imagename = $newfilename;
-
-				$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena , Zdjecie , Tagi) VALUES ('', '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]' , '$newfilename' , '$_POST[Tagi]')";
-
-				mysqli_query($DB, $query);
-
-				mysqli_close($DB);
-				header("Location: index.php?Strona=TwojeKonto");
-				if (is_uploaded_file($imagetemp)) {
-					if (move_uploaded_file($imagetemp, $imagePath . $imagename)) {
-						echo "Sussecfully uploaded your image.";
+					while ($row = $result->fetch_assoc()) {
+						$prod = $row['ID'];
 					}
+					$newfilename = $prod . "." . $extension;
+
+					$imagename = $newfilename;
+
+					$query = "INSERT INTO produkty(ID , Kogo_produkt , Opis , Tytul , Data_dodania , Cena , Zdjecie , Tagi) VALUES (NULL, '$_SESSION[id]' , '$_POST[Opis]' , '$_POST[Nazwa]' , curdate() , '$_POST[Cena]' , '$newfilename' , '$_POST[Tagi]')";
+					if (is_uploaded_file($imagetemp)) {
+						if (move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+							echo "Sussecfully uploaded your image.";
+						}
+					}
+					header("Location: /index.php");
+					mysqli_query($DB, $query);
+				} else {
+					$b = "Nie prawidłowy rodzaj obrazu (możesz przesłać jedynie jpeg , png , jpg) bądź obraz jest za duży (maks 8 MB)";
 				}
+				mysqli_close($DB);
 			}
 
 			break;
 	}
 } else {
-	header("Location: index.php");
+	header("Location: /index.php");
 }

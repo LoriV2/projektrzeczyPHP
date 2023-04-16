@@ -27,7 +27,7 @@ function  produkty(
 					
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">' . $row['Tytul'] . '</h5>
+						<h5 class="card-title text-truncate">' . $row['Tytul'] . '</h5 >
 						<p class="card-text"></p>
 						' . $row['Cena'] . ' zł
 					</div>
@@ -56,7 +56,6 @@ function  produkty(
 		</div>
 	</thead>
 	<tbody class="list container-fluid">
-
 		<?php
 		echo produkty(
 			$Database_Host,

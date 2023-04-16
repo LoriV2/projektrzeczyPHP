@@ -14,7 +14,7 @@ if (($k == "k") && (isset($_GET['ID']))) {
 		<div class='container tło-produkt'>
 			<div class='row'>
     			<div class='col'>
-      				" . $row['Tytul'] . "
+      				<h1>" . $row['Tytul'] . "</h1>
     			</div>
 			</div>
   			<div class='row'>
@@ -23,7 +23,7 @@ if (($k == "k") && (isset($_GET['ID']))) {
     			</div>
 				<div class='col'>
 				" . $row['Cena'] . " zł <br>";
-		if (isset($_SESSION['id'])) {
+		if (isset($_SESSION['user'])) {
 			echo "<a href='index.php?Strona=Koszyk&&ID=" . $_GET['ID'] . "'><button  class='btn'>Dodaj do koszyka</button></a>";
 		} else {
 			echo "<a href='index.php?Strona=Logowanie'><button  class='btn'>Zaloguj się</button></a>";
