@@ -23,12 +23,12 @@ if (($k == "k") && ($_SESSION['user'] == 'administrator')) {
         echo '
         <div class = "">
             <p>
-                <a class="btn" data-bs-toggle="collapse" href="#ad' . $row['Uzytkownik'] . '" role="button" aria-expanded="false" aria-controls="ad' . $row['Uzytkownik'] . '">Zgłoszenie nr: ' . $row['ID'] . '</a>
+                <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Zgłoszenie nr: ' . $row['ID'] . '</a>
             </p>
             <div class = "formdiv">
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse" id="ad' . $row['Uzytkownik'] . '">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
                             <div class="card card-body">
                             Użytkownik: ' . $row['Uzytkownik'] . '<br>
                             Kilka słów o użytkowniku: ' . $row['Kilka_slow'] . '<br>
