@@ -22,7 +22,7 @@ if ($k == "k") {
 		</div>
 		<div class="mb-3">
 			<label for="formFile" class="form-label">Zdjęcie twojego produktu</label>
-			<input class="form-control" type="file" name="zdjecie" id="formFile">
+			<input class="form-control" type="file" name="zdjecie" required  id="formFile">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Podaj cenę (w zł)</label>
