@@ -74,17 +74,6 @@ if (isset($_GET['Strona'])) {
 					</li>
 					<li class="nav-item">
 						<?php
-<<<<<<< Updated upstream
-						if (isset($_SESSION['id'])) {
-							if (($_SESSION['user'] == "administrator")) {
-								echo '<a class="nav-link" href="index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
-							} else if ($_SESSION['user'] == "pracownik") {
-								echo '<li class="nav-item">
-								<a class="nav-link" href="index.php?Strona=Zamówienia">Zamówienia</a>
-								</li>';
-							} else {
-								echo '<a class="nav-link" href="index.php?Strona=Dołącz">Dołącz do nas!</a>';
-=======
 						if (isset($_SESSION['user'])) {
 							if (($_SESSION['user'] == "administrator")) {
 								echo '<a class="nav-link" href="/index.php?Strona=Zgłoszenia">Zgłoszenia</a>';
@@ -94,7 +83,6 @@ if (isset($_GET['Strona'])) {
 								</li>';
 							} else {
 								echo '<a class="nav-link" href="/index.php?Strona=Dołącz">Dołącz do nas!</a>';
->>>>>>> Stashed changes
 							}
 						}
 						?>
