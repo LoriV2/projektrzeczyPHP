@@ -5,6 +5,8 @@ if ($k == "k") {
     } else {
         header("Location: /index.php?Strona=Logowanie");
     }
+}else{
+    header("Location: /index.php?Strona=Logowanie");
 }
 ?>
 <div class="formdiv container justify-content-center">

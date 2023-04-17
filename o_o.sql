@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Kwi 2023, 22:23
+-- Czas generowania: 16 Kwi 2023, 19:04
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -35,7 +35,7 @@ CREATE TABLE `produkty` (
   `Data_dodania` date NOT NULL,
   `Zdjecie` varchar(255) NOT NULL,
   `Cena` double NOT NULL,
-  `Tagi` varchar(30) NOT NULL
+  `Tagi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
@@ -43,15 +43,8 @@ CREATE TABLE `produkty` (
 --
 
 INSERT INTO `produkty` (`ID`, `Kogo_produkt`, `Opis`, `Tytul`, `Data_dodania`, `Zdjecie`, `Cena`, `Tagi`) VALUES
-(32, 27, 'super jest', 'ewe', '2023-04-08', '.png', 32, 'Le , de , aa\r\n'),
-(33, 27, 'qqq', 'qqq', '2023-04-08', '32.jfif', 22, 'qq , nowe , fajne'),
-(34, 27, 'qqq', 'qqq', '2023-04-08', '33.jpg', 22, 'www'),
-(35, 27, 'www', 'www', '2023-04-08', '34.gif', 22, 'www'),
-(36, 27, 'www', 'qqq', '2023-04-08', '35.png', 22, 'wqq'),
-(37, 27, '222', '222', '2023-04-08', '36.png', 222, '222'),
-(38, 27, '222', '222', '2023-04-08', '37.gif', 222, '222'),
-(39, 27, '222', '222', '2023-04-08', '38.gif', 222, '222'),
-(40, 27, '222', '222', '2023-04-08', '39.jpg', 222, '222');
+(41, 30, 'bulbulaturuje super bomble bul bul', 'bulbulator', '2023-04-15', '.jpg', 32, 'bulbulator , nowy , superancki'),
+(49, 30, 'Kamień Rzeczywistości – jeden z sześciu Kamieni Nieskończoności. Został stworzony przez Kosmiczne Byty. Początkowo był w posiadaniu Mrocznych Elfów między innymi: Malekith, następnie był w rękach Asów. Po wiekach spędzonych w ukryciu, kamień dostał się w posiadanie Jane Foster. Kamień jako osłonę miał płynną substancję (Jako jedyny z kamieni miał płynną osłonę, inne miały osłonki jako ciał stałe) Ether. W 2023 roku,Thor i Rocket podróżowali w czasie do 2013 aby móc przywrócić do życia wszystkich zmarłych poprzez pstryknięcie Thanosa.', 'kamień rzeczywistości', '2023-04-15', '48.jpg', 2, 'Nowe , Nieśmigane , superancki');
 
 -- --------------------------------------------------------
 
@@ -103,7 +96,42 @@ INSERT INTO `sesje` (`Id`, `Kto`, `Kiedy`, `Do_kiedy`) VALUES
 (80, 29, '2023-04-11 13:49:42.000000', '2023-04-11 14:49:42.000000'),
 (81, 29, '2023-04-11 13:49:52.000000', '2023-04-11 14:49:52.000000'),
 (82, 29, '2023-04-11 15:36:43.000000', '2023-04-11 16:36:43.000000'),
-(83, 27, '2023-04-11 15:36:52.000000', '2023-04-11 16:36:52.000000');
+(83, 27, '2023-04-11 15:36:52.000000', '2023-04-11 16:36:52.000000'),
+(84, 27, '2023-04-13 17:41:45.000000', '2023-04-13 18:41:45.000000'),
+(85, 29, '2023-04-13 18:38:21.000000', '2023-04-13 19:38:21.000000'),
+(86, 27, '2023-04-13 19:33:10.000000', '2023-04-13 20:33:10.000000'),
+(87, 27, '2023-04-14 20:44:16.000000', '2023-04-14 21:44:16.000000'),
+(88, 27, '2023-04-15 00:55:27.000000', '2023-04-15 01:55:27.000000'),
+(89, 30, '2023-04-15 00:57:57.000000', '2023-04-15 01:57:57.000000'),
+(90, 27, '2023-04-15 03:28:37.000000', '2023-04-15 04:28:37.000000'),
+(91, 27, '2023-04-15 12:37:34.000000', '2023-04-15 13:37:34.000000'),
+(92, 29, '2023-04-15 12:37:43.000000', '2023-04-15 13:37:43.000000'),
+(93, 30, '2023-04-15 12:38:00.000000', '2023-04-15 13:38:00.000000'),
+(94, 28, '2023-04-15 13:04:17.000000', '2023-04-15 14:04:17.000000'),
+(95, 27, '2023-04-15 13:05:00.000000', '2023-04-15 14:05:00.000000'),
+(96, 28, '2023-04-15 13:05:48.000000', '2023-04-15 14:05:48.000000'),
+(97, 28, '2023-04-15 15:40:46.000000', '2023-04-15 16:40:46.000000'),
+(98, 31, '2023-04-15 15:43:01.000000', '2023-04-15 16:43:01.000000'),
+(99, 27, '2023-04-15 16:23:08.000000', '2023-04-15 17:23:08.000000'),
+(100, 31, '2023-04-15 16:23:41.000000', '2023-04-15 17:23:41.000000'),
+(101, 31, '2023-04-15 19:21:30.000000', '2023-04-15 20:21:30.000000'),
+(102, 31, '2023-04-15 19:28:15.000000', '2023-04-15 20:28:15.000000'),
+(103, 31, '2023-04-15 19:30:47.000000', '2023-04-15 20:30:47.000000'),
+(104, 31, '2023-04-15 19:35:50.000000', '2023-04-15 20:35:50.000000'),
+(105, 31, '2023-04-15 19:37:22.000000', '2023-04-15 20:37:22.000000'),
+(106, 31, '2023-04-15 21:13:37.000000', '2023-04-15 22:13:37.000000'),
+(107, 31, '2023-04-16 12:08:10.000000', '2023-04-16 13:08:10.000000'),
+(108, 31, '2023-04-16 12:09:48.000000', '2023-04-16 13:09:48.000000'),
+(109, 31, '2023-04-16 13:31:22.000000', '2023-04-16 14:31:22.000000'),
+(110, 31, '2023-04-16 13:32:49.000000', '2023-04-16 14:32:49.000000'),
+(111, 31, '2023-04-16 14:01:53.000000', '2023-04-16 15:01:53.000000'),
+(112, 31, '2023-04-16 14:05:52.000000', '2023-04-16 15:05:52.000000'),
+(113, 31, '2023-04-16 14:07:13.000000', '2023-04-16 15:07:13.000000'),
+(114, 31, '2023-04-16 14:13:31.000000', '2023-04-16 15:13:31.000000'),
+(115, 27, '2023-04-16 14:23:48.000000', '2023-04-16 15:23:48.000000'),
+(116, 27, '2023-04-16 17:17:02.000000', '2023-04-16 18:17:02.000000'),
+(117, 31, '2023-04-16 18:59:44.000000', '2023-04-16 19:59:44.000000'),
+(118, 29, '2023-04-16 18:59:58.000000', '2023-04-16 19:59:58.000000');
 
 -- --------------------------------------------------------
 
@@ -117,7 +145,6 @@ CREATE TABLE `uzytkownicy` (
   `Haslo` longtext NOT NULL,
   `Nazwa` varchar(255) NOT NULL,
   `Data_dolaczenia` date NOT NULL DEFAULT current_timestamp(),
-  `Profilowe` varchar(255) NOT NULL,
   `Rola` enum('użytkownik','administrator','pracownik') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
@@ -125,10 +152,12 @@ CREATE TABLE `uzytkownicy` (
 -- Zrzut danych tabeli `uzytkownicy`
 --
 
-INSERT INTO `uzytkownicy` (`Id`, `Login`, `Haslo`, `Nazwa`, `Data_dolaczenia`, `Profilowe`, `Rola`) VALUES
-(27, 'a95bc16631ae2b6fadb455ee018da0adc2703e56d89e3eed074ce56d2f7b1b6a', 'a95bc16631ae2b6fadb455ee018da0adc2703e56d89e3eed074ce56d2f7b1b6a', 'qqq', '2023-04-06', '', 'użytkownik'),
-(28, '7c2ecd07f155648431e0f94b89247d713c5786e1e73e953f2fe7eca39534cd6d', '7c2ecd07f155648431e0f94b89247d713c5786e1e73e953f2fe7eca39534cd6d', 'www', '2023-04-06', '', 'użytkownik'),
-(29, '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin', '2023-04-11', '', 'administrator');
+INSERT INTO `uzytkownicy` (`Id`, `Login`, `Haslo`, `Nazwa`, `Data_dolaczenia`, `Rola`) VALUES
+(27, 'a95bc16631ae2b6fadb455ee018da0adc2703e56d89e3eed074ce56d2f7b1b6a', 'a95bc16631ae2b6fadb455ee018da0adc2703e56d89e3eed074ce56d2f7b1b6a', 'qqq', '2023-04-06', 'pracownik'),
+(28, '7c2ecd07f155648431e0f94b89247d713c5786e1e73e953f2fe7eca39534cd6d', '7c2ecd07f155648431e0f94b89247d713c5786e1e73e953f2fe7eca39534cd6d', 'www', '2023-04-06', 'użytkownik'),
+(29, '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin', '2023-04-11', 'administrator'),
+(30, '91617f4849abe274fbd0c4f4c3b3b6e68a99e40e077f2c51aa9428689926a058', '91617f4849abe274fbd0c4f4c3b3b6e68a99e40e077f2c51aa9428689926a058', 'Ten', '2023-04-15', 'użytkownik'),
+(31, 'e4432baa90819aaef51d2a7f8e148bf7e679610f3173752fabb4dcb2d0f418d3', 'e4432baa90819aaef51d2a7f8e148bf7e679610f3173752fabb4dcb2d0f418d3', 'ten', '2023-04-15', 'użytkownik');
 
 -- --------------------------------------------------------
 
@@ -164,10 +193,12 @@ CREATE TABLE `zamowienia` (
 --
 
 INSERT INTO `zamowienia` (`id`, `produkt`, `adres`, `cena`, `data`, `status`, `kogo`) VALUES
-(3, 32, 'qqq', 32, '2023-04-10', 'w trakcie pakowania', 27),
-(4, 33, 'qqq', 22, '2023-04-10', 'w trakcie pakowania', 27),
-(5, 32, 'qqq', 32, '2023-04-10', 'w trakcie pakowania', 27),
-(6, 35, 'qqq', 22, '2023-04-10', 'w trakcie pakowania', 27);
+(7, 49, 'Poznańska 9 Poznań', 2, '2023-04-15', 'dostarczono', 28),
+(8, 41, 'Poznańska 9 Poznań', 32, '2023-04-15', 'dostarczono', 28),
+(9, 49, 'Poznańska 11 Poznań', 2, '2023-04-15', 'dostarczono', 31),
+(10, 41, 'Poznańska 11 Poznań', 32, '2023-04-15', 'dostarczono', 31),
+(11, 49, 'Poznańska 9 Poznań', 2, '2023-04-16', 'dostarczono', 31),
+(12, 49, 'Poznańska 9 Poznań', 2, '2023-04-16', 'dostarczono', 27);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -211,31 +242,31 @@ ALTER TABLE `zamowienia`
 -- AUTO_INCREMENT dla tabeli `produkty`
 --
 ALTER TABLE `produkty`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT dla tabeli `sesje`
 --
 ALTER TABLE `sesje`
-  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT dla tabeli `wnioski`
 --
 ALTER TABLE `wnioski`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `zamowienia`
 --
 ALTER TABLE `zamowienia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

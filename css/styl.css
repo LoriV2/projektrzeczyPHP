@@ -38,9 +38,7 @@ td img {
 }
 
 .card {
-  min-width: fit-content;
-  max-width: fit-content;
-  min-height: 20vh;
+  max-width: 20vh;
   max-height: fit-content;
   border: none;
   border-radius: 2vh;
@@ -60,9 +58,10 @@ tr {
   background: -moz-linear-gradient(90deg, #aab5bb 0%, #ffffff 100%);
   background: -o-linear-gradient(90deg, #aab5bb 0%, #ffffff 100%);
   background: linear-gradient(90deg, #aab5bb 0%, #ffffff 100%);
-  padding: 1vw;
-  width: fit-content;
+  margin: 1vw;
+  width: 20vw;
   text-align: left;
+  border-radius: 2vh;
 }
 .koszyk img {
   min-height: 140px;

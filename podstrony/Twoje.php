@@ -39,8 +39,21 @@ if ($k == "k") {
         $query = "SELECT * FROM zamowienia WHERE kogo = '$_SESSION[id]'";
         $result = mysqli_query($DB, $query);
         while ($row = $result->fetch_assoc()) {
-            echo "<a href=" . $row['id'] . ">Numer zamówienia: " . $row['id'] . " <br>Kiedy zamówiono: " . $row['data'] . "<br> Status przesyłki: " . $row['status'] . "<br></a>";
+            echo "<a href='/index.php?Strona=Zamówienie&&ID=" . $row['id'] . " '><p>Numer zamówienia: " . $row['id'] . " 
+            <br>Kiedy zamówiono: " . $row['data'] . "
+            <br> Status przesyłki: " . $row['status'] . "
+            <br> Koszt zamówienia: " . $row['cena'] . " zł</p></a><br>";
         }
         ?>
     </div>
+    <p>
+        Łącznie do zapłaty:
+        <?php
+        $query = "SELECT SUM(cena) FROM zamowienia WHERE kogo = '$_SESSION[id]'";
+        $result = mysqli_query($DB, $query);
+        while ($row = $result->fetch_assoc()) {
+            echo $row['SUM(cena)'] . " zł";
+        }
+        ?>
+    </p>
 </div>
