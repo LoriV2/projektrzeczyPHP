@@ -38,6 +38,7 @@ td img {
 }
 
 .card {
+  min-width: 20vh;
   max-width: 20vh;
   max-height: fit-content;
   border: none;
