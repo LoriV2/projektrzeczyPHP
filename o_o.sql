@@ -56,7 +56,8 @@ CREATE TABLE `sesje` (
   `Id` int(255) NOT NULL,
   `Kto` int(255) NOT NULL,
   `Kiedy` datetime(6) NOT NULL,
-  `Do_kiedy` datetime(6) NOT NULL
+  `Do_kiedy` datetime(6) NOT NULL,
+  `IP` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --

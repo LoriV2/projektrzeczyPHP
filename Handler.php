@@ -62,9 +62,10 @@ if (!empty($_POST)) {
 
 			if (mysqli_num_rows(mysqli_query($DB, $query)) > 0) {
 				//dostaje login
+				$ipaddress = getenv("REMOTE_ADDR");
 				$result = mysqli_query($DB, $query);
 				$result = mysqli_fetch_assoc($result);
-				$query = "INSERT INTO `sesje` VALUES (NULL, $result[Id] ,CURRENT_TIMESTAMP() , ADDTIME(CURRENT_TIMESTAMP(), ' 1:0:0.000'))";
+				$query = "INSERT INTO `sesje` VALUES (NULL, $result[Id] ,CURRENT_TIMESTAMP() , ADDTIME(CURRENT_TIMESTAMP(), ' 1:0:0.000') , '$ipaddress')";
 				mysqli_query($DB, $query);
 				mysqli_close($DB);
 				//dostaje login
